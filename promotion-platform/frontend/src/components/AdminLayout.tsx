@@ -249,3 +249,5 @@ function MobileSidebar({ navigation, pathname }: {
     </div>
   );
 }
+
+export default AdminLayout;

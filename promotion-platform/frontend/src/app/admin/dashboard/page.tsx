@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
+import AdminLayout from '@/components/AdminLayout';
 import { 
   BarChart, 
   Bar, 

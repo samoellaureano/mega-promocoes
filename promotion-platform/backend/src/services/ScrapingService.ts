@@ -273,7 +273,7 @@ export class ScrapingService {
       data: {
         name: target.name,
         baseUrl: target.baseUrl,
-        selectors: target.selectors,
+        selectors: JSON.stringify(target.selectors),
         isActive: true
       }
     });
@@ -305,7 +305,7 @@ export class ScrapingService {
     });
 
     const $ = cheerio.load(response.data);
-    const selectors = target.selectors;
+    const selectors = JSON.parse(target.selectors as string);
     const testResults: any[] = [];
 
     $(selectors.container).slice(0, 5).each((index, element) => {
