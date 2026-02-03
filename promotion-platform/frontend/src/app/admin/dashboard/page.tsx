@@ -37,7 +37,6 @@ import {
   Target
 } from 'lucide-react';
 import { api } from '@/lib/api';
-import { AdminLayout } from '@/components/AdminLayout';
 import { StatCard } from '@/components/StatCard';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 

@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
   password  String
@@ -20,7 +20,7 @@ model User {
 }
 
 model Promotion {
-  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  id              Int              @id @default(autoincrement())
   title           String
   description     String?
   originalPrice   Float
@@ -48,8 +48,8 @@ model Promotion {
 }
 
 model PriceHistory {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  promotionId String    @db.ObjectId
+  id          Int       @id @default(autoincrement())
+  promotionId Int
   price       Float
   checkedAt   DateTime  @default(now())
   promotion   Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
@@ -58,8 +58,8 @@ model PriceHistory {
 }
 
 model SentMessage {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  promotionId String    @db.ObjectId
+  id          Int       @id @default(autoincrement())
+  promotionId Int
   platform    String    @default("whatsapp")
   recipient   String
   message     String
@@ -72,7 +72,7 @@ model SentMessage {
 }
 
 model Configuration {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int      @id @default(autoincrement())
   key       String   @unique
   value     String
   type      String   @default("string")
@@ -85,15 +85,15 @@ model Configuration {
 }
 
 model ScrapingTarget {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          Int       @id @default(autoincrement())
   name        String
   baseUrl     String
-  isActive    Boolean  @default(true)
-  selectors   String   // JSON stored as string
+  isActive    Boolean   @default(true)
+  selectors   String    // JSON stored as string
   lastScrape  DateTime?
-  totalItems  Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  totalItems  Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@map("scraping_targets")
 }
