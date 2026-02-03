@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Diagnóstico de Erros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">🔍 Diagnóstico de Erros</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow mb-8">
+            <h2 class="text-xl font-bold mb-4">🧪 Teste de Recursos</h2>
+            <div id="test-results" class="space-y-2">
+                <div>📡 Testando CDNs...</div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow mb-8">
+            <h2 class="text-xl font-bold mb-4">🔗 Teste de Links</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="index.html" class="bg-blue-100 hover:bg-blue-200 p-3 rounded text-center">📄 Index</a>
+                <a href="admin-login.html" class="bg-green-100 hover:bg-green-200 p-3 rounded text-center">🔐 Login</a>
+                <a href="admin-dashboard.html" class="bg-purple-100 hover:bg-purple-200 p-3 rounded text-center">📊 Dashboard</a>
+                <a href="admin-promotions.html" class="bg-yellow-100 hover:bg-yellow-200 p-3 rounded text-center">🏷️ Promoções</a>
+                <a href="admin-analytics.html" class="bg-red-100 hover:bg-red-200 p-3 rounded text-center">📈 Analytics</a>
+                <a href="admin-logs.html" class="bg-indigo-100 hover:bg-indigo-200 p-3 rounded text-center">🔧 Logs</a>
+            </div>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-4">📋 Console Log</h2>
+            <div id="console-log" class="bg-gray-50 p-4 rounded border min-h-32 font-mono text-sm">
+                <!-- Log será preenchido pelo JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const consoleLog = document.getElementById('console-log');
+        const testResults = document.getElementById('test-results');
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            consoleLog.appendChild(logEntry);
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+        
+        function updateTestResults(message) {
+            testResults.innerHTML += `<div>${message}</div>`;
+        }
+        
+        // Testes automáticos
+        window.addEventListener('load', () => {
+            log('✅ Página carregada com sucesso');
+            
+            // Teste CDN Tailwind
+            if (window.tailwind || document.querySelector('script[src*="tailwindcss"]')) {
+                updateTestResults('✅ Tailwind CSS: OK');
+                log('✅ Tailwind CSS carregado');
+            } else {
+                updateTestResults('❌ Tailwind CSS: ERRO');
+                log('❌ Erro: Tailwind CSS não carregado');
+            }
+            
+            // Teste de navegação
+            const links = document.querySelectorAll('a[href]');
+            log(`🔗 Encontrados ${links.length} links para teste`);
+            
+            // Teste de JavaScript
+            try {
+                const testObj = { test: true };
+                log('✅ JavaScript funcionando normalmente');
+            } catch (error) {
+                log(`❌ Erro JavaScript: ${error.message}`);
+            }
+        });
+        
+        // Capturar erros JavaScript
+        window.addEventListener('error', (event) => {
+            log(`❌ ERRO JS: ${event.error.message} em ${event.filename}:${event.lineno}`);
+        });
+        
+        // Teste de fetch para verificar conectividade
+        async function testConnectivity() {
+            try {
+                const response = await fetch('admin-dashboard.html');
+                if (response.ok) {
+                    log('✅ Conectividade com arquivos: OK');
+                } else {
+                    log(`❌ Erro de conectividade: ${response.status}`);
+                }
+            } catch (error) {
+                log(`❌ Erro de rede: ${error.message}`);
+            }
+        }
+        
+        // Executar teste de conectividade após 2 segundos
+        setTimeout(testConnectivity, 2000);
+    </script>
+</body>
+</html>

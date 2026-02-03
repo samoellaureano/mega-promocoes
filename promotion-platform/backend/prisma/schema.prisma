@@ -1,0 +1,100 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Promotion {
+  id              String           @id @default(cuid())
+  title           String
+  description     String?
+  originalPrice   Float
+  promoPrice      Float
+  discountPercent Float
+  store           String
+  category        String?
+  imageUrl        String?
+  productUrl      String
+  affiliateUrl    String?
+  relevanceScore  Float            @default(0)
+  isValid         Boolean          @default(true)
+  isApproved      Boolean?
+  generatedText   String?
+  source          String
+  sourceId        String?
+  lastChecked     DateTime?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  sentMessages    SentMessage[]
+  priceHistory    PriceHistory[]
+
+  @@unique([source, sourceId])
+  @@map("promotions")
+}
+
+model PriceHistory {
+  id          String    @id @default(cuid())
+  promotionId String
+  price       Float
+  checkedAt   DateTime  @default(now())
+  promotion   Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+
+  @@map("price_history")
+}
+
+model SentMessage {
+  id          String    @id @default(cuid())
+  promotionId String
+  platform    String    @default("whatsapp")
+  recipient   String
+  message     String
+  sentAt      DateTime  @default(now())
+  delivered   Boolean   @default(false)
+  clicked     Boolean   @default(false)
+  promotion   Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+
+  @@map("sent_messages")
+}
+
+model Configuration {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  type      String   @default("string")
+  category  String   @default("general")
+  encrypted Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("configurations")
+}
+
+model ScrapingTarget {
+  id          String   @id @default(cuid())
+  name        String
+  baseUrl     String
+  isActive    Boolean  @default(true)
+  selectors   String   // JSON stored as string
+  lastScrape  DateTime?
+  totalItems  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("scraping_targets")
+}
+

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 Analytics - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 flex-shrink-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-xl">🔥</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+                </div>
+                
+                <nav>
+                    <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📊</span> Dashboard
+                    </a>
+                    <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🏷️</span> Promoções
+                    </a>
+                    <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🤖</span> IA Generator
+                    </a>
+                    <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📱</span> WhatsApp
+                    </a>
+                    <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🕷️</span> Scraping
+                    </a>
+                    <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">⚙️</span> Configurações
+                    </a>
+                    <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                        <span class="mr-3">📈</span> Analytics
+                    </a>
+                    <a href="admin-logs.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🔧</span> Logs
+                    </a>
+                    <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🌐</span> Ver Site
+                    </a>
+                    <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                        <span class="mr-3">🚪</span> Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">📈 Analytics Avançado</h1>
+                        <p class="text-gray-600">Análise detalhada de performance e engajamento</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <select class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            <option>Últimos 7 dias</option>
+                            <option>Últimos 30 dias</option>
+                            <option>Últimos 90 dias</option>
+                            <option>Este ano</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">👁️</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Visualizações</h3>
+                                <p class="text-2xl font-bold text-gray-900">89.4K</p>
+                                <p class="text-green-600 text-sm">↗ +23% vs período anterior</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">🖱️</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Cliques</h3>
+                                <p class="text-2xl font-bold text-gray-900">12.8K</p>
+                                <p class="text-green-600 text-sm">↗ +31% vs período anterior</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">📈</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Taxa de Conversão</h3>
+                                <p class="text-2xl font-bold text-gray-900">14.3%</p>
+                                <p class="text-green-600 text-sm">↗ +2.1% vs período anterior</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 rounded-full">
+                                <span class="text-2xl">💰</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Receita Estimada</h3>
+                                <p class="text-2xl font-bold text-gray-900">R$ 45.8K</p>
+                                <p class="text-green-600 text-sm">↗ +28% vs período anterior</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Traffic Chart -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">📊 Tráfego ao Longo do Tempo</h3>
+                        <div class="h-64">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Conversion Funnel -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">🎯 Funil de Conversão</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-8">
+                                    <div class="bg-blue-600 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold" style="width: 100%">
+                                        89.4K Visitantes
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-8">
+                                    <div class="bg-green-600 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold" style="width: 65%">
+                                        58.1K Visualizaram Promoção
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-8">
+                                    <div class="bg-yellow-600 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold" style="width: 22%">
+                                        19.7K Clicaram no Link
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-full bg-gray-200 rounded-full h-8">
+                                    <div class="bg-purple-600 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold" style="width: 14%">
+                                        12.8K Concluíram Compra
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Performing Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Top Categories -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">🏆 Categorias Mais Populares</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">📱</span>
+                                    <span class="font-medium">Eletrônicos</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold">34.2K</div>
+                                    <div class="text-sm text-green-600">+18%</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">👔</span>
+                                    <span class="font-medium">Moda e Beleza</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold">21.8K</div>
+                                    <div class="text-sm text-green-600">+25%</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🏠</span>
+                                    <span class="font-medium">Casa e Jardim</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold">18.7K</div>
+                                    <div class="text-sm text-green-600">+12%</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">⚽</span>
+                                    <span class="font-medium">Esporte e Lazer</span>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-lg font-bold">14.7K</div>
+                                    <div class="text-sm text-green-600">+31%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Device Analytics -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">📱 Analytics por Dispositivo</h3>
+                        <div class="h-64">
+                            <canvas id="deviceChart"></canvas>
+                        </div>
+                        <div class="mt-4 grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-blue-600">68.2%</div>
+                                <div class="text-sm text-gray-600">Mobile</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-600">24.8%</div>
+                                <div class="text-sm text-gray-600">Desktop</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-purple-600">7.0%</div>
+                                <div class="text-sm text-gray-600">Tablet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Analytics -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">📋 Análise Detalhada</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Promoção</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Categoria</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Visualizações</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Cliques</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">CTR</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Receita Est.</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="font-medium">Smartphone Samsung A54</div>
+                                        <div class="text-sm text-gray-500">32% OFF</div>
+                                    </td>
+                                    <td class="py-3 px-4">📱 Eletrônicos</td>
+                                    <td class="py-3 px-4">12,847</td>
+                                    <td class="py-3 px-4 text-blue-600">1,923</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">15.0%</span>
+                                    </td>
+                                    <td class="py-3 px-4 font-semibold">R$ 8.4K</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="font-medium">Smart TV LG 55" 4K</div>
+                                        <div class="text-sm text-gray-500">28% OFF</div>
+                                    </td>
+                                    <td class="py-3 px-4">📺 Eletrônicos</td>
+                                    <td class="py-3 px-4">8,234</td>
+                                    <td class="py-3 px-4 text-blue-600">1,156</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">14.0%</span>
+                                    </td>
+                                    <td class="py-3 px-4 font-semibold">R$ 6.2K</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">
+                                        <div class="font-medium">Tênis Nike Air Max</div>
+                                        <div class="text-sm text-gray-500">50% OFF</div>
+                                    </td>
+                                    <td class="py-3 px-4">👟 Moda</td>
+                                    <td class="py-3 px-4">15,892</td>
+                                    <td class="py-3 px-4 text-blue-600">2,234</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">14.1%</span>
+                                    </td>
+                                    <td class="py-3 px-4 font-semibold">R$ 5.8K</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Traffic Chart
+        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+        new Chart(trafficCtx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [{
+                    label: 'Visualizações',
+                    data: [8200, 12400, 9800, 14200, 16800, 21400, 18900],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Cliques',
+                    data: [1240, 1890, 1456, 2103, 2567, 3204, 2891],
+                    borderColor: '#10B981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Device Chart
+        const deviceCtx = document.getElementById('deviceChart').getContext('2d');
+        new Chart(deviceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Mobile', 'Desktop', 'Tablet'],
+                datasets: [{
+                    data: [68.2, 24.8, 7.0],
+                    backgroundColor: ['#3B82F6', '#10B981', '#8B5CF6'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Teste de Interações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">🧪 Teste de Interações do Sistema</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Testes de Navegação -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">🧭 Navegação</h2>
+                <div class="space-y-2">
+                    <a href="index.html" class="block bg-blue-100 hover:bg-blue-200 p-2 rounded text-blue-800">📄 Página Principal</a>
+                    <a href="admin-login.html" class="block bg-gray-100 hover:bg-gray-200 p-2 rounded text-gray-800">🔐 Login Admin</a>
+                    <a href="admin-dashboard.html" class="block bg-green-100 hover:bg-green-200 p-2 rounded text-green-800">📊 Dashboard</a>
+                    <a href="admin-promotions.html" class="block bg-purple-100 hover:bg-purple-200 p-2 rounded text-purple-800">🏷️ Promoções</a>
+                </div>
+            </div>
+            
+            <!-- Testes de Funcionalidades -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">⚙️ Funcionalidades</h2>
+                <div class="space-y-2">
+                    <a href="admin-ia-generator.html" class="block bg-yellow-100 hover:bg-yellow-200 p-2 rounded text-yellow-800">🤖 IA Generator</a>
+                    <a href="admin-whatsapp.html" class="block bg-green-100 hover:bg-green-200 p-2 rounded text-green-800">📱 WhatsApp</a>
+                    <a href="admin-scraping.html" class="block bg-red-100 hover:bg-red-200 p-2 rounded text-red-800">🕷️ Scraping</a>
+                </div>
+            </div>
+            
+            <!-- Testes de Sistema -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-bold mb-4">🔧 Sistema</h2>
+                <div class="space-y-2">
+                    <a href="admin-settings.html" class="block bg-orange-100 hover:bg-orange-200 p-2 rounded text-orange-800">⚙️ Configurações</a>
+                    <a href="admin-analytics.html" class="block bg-teal-100 hover:bg-teal-200 p-2 rounded text-teal-800">📈 Analytics</a>
+                    <a href="admin-logs.html" class="block bg-pink-100 hover:bg-pink-200 p-2 rounded text-pink-800">🔧 Logs</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testes Interativos -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-4">🎮 Testes Interativos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button onclick="testButton('success')" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+                    ✅ Teste Sucesso
+                </button>
+                <button onclick="testButton('warning')" class="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded">
+                    ⚠️ Teste Aviso
+                </button>
+                <button onclick="testButton('error')" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">
+                    ❌ Teste Erro
+                </button>
+                <button onclick="testButton('info')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                    ℹ️ Teste Info
+                </button>
+            </div>
+        </div>
+        
+        <!-- Log de Testes -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-bold mb-4">📋 Log de Testes</h2>
+            <div id="testLog" class="bg-gray-50 p-4 rounded border min-h-32">
+                <p class="text-gray-600">Clique nos botões acima para testar interações...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testButton(type) {
+            const log = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            let message, color;
+            
+            switch(type) {
+                case 'success':
+                    message = '✅ Teste de sucesso executado!';
+                    color = 'text-green-600';
+                    break;
+                case 'warning':
+                    message = '⚠️ Teste de aviso executado!';
+                    color = 'text-yellow-600';
+                    break;
+                case 'error':
+                    message = '❌ Teste de erro executado!';
+                    color = 'text-red-600';
+                    break;
+                case 'info':
+                    message = 'ℹ️ Teste de info executado!';
+                    color = 'text-blue-600';
+                    break;
+                default:
+                    message = '🔧 Teste executado!';
+                    color = 'text-gray-600';
+            }
+            
+            const logEntry = document.createElement('div');
+            logEntry.className = `mb-2 ${color}`;
+            logEntry.innerHTML = `[${timestamp}] ${message}`;
+            
+            log.appendChild(logEntry);
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        // Teste automático de carregamento
+        window.addEventListener('load', () => {
+            testButton('info');
+        });
+    </script>
+</body>
+</html>

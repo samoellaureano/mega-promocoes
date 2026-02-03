@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕷️ Web Scraping - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+        .crawling { animation: crawl 3s infinite linear; }
+        @keyframes crawl {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 flex-shrink-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-xl">🔥</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+                </div>
+                
+                <nav>
+                    <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📊</span> Dashboard
+                    </a>
+                    <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🏷️</span> Promoções
+                    </a>
+                    <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🤖</span> IA Generator
+                    </a>
+                    <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📱</span> WhatsApp
+                    </a>
+                    <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                        <span class="mr-3">🕷️</span> Scraping
+                    </a>
+                    <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">⚙️</span> Configurações
+                    </a>
+                    <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📈</span> Analytics
+                    </a>
+                    <a href="admin-logs.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🔧</span> Logs
+                    </a>
+                    <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🌐</span> Ver Site
+                    </a>
+                    <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                        <span class="mr-3">🚪</span> Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">🕷️ Web Scraping</h1>
+                        <p class="text-gray-600">Automação para coleta de promoções em lojas online</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                            🤖 6 Bots Ativos
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">🔍</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Produtos Coletados</h3>
+                                <p class="text-2xl font-bold text-gray-900">15,847</p>
+                                <p class="text-green-600 text-sm">↗ +234 hoje</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">🏪</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Lojas Monitoradas</h3>
+                                <p class="text-2xl font-bold text-gray-900">12</p>
+                                <p class="text-gray-500 text-sm">Amazon, ML, Americanas...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">⚡</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Taxa de Sucesso</h3>
+                                <p class="text-2xl font-bold text-gray-900">98.7%</p>
+                                <p class="text-green-600 text-sm">Excelente performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 rounded-full">
+                                <span class="text-2xl">🕐</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Última Execução</h3>
+                                <p class="text-2xl font-bold text-gray-900">5min</p>
+                                <p class="text-green-600 text-sm">Executando agora</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Scrapers -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">🤖 Bots de Scraping Ativos</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">🛒</span>
+                                    <h4 class="font-semibold">Amazon</h4>
+                                </div>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Ativo</span>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Produtos encontrados:</span>
+                                    <span class="font-semibold">3,421</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Última execução:</span>
+                                    <span class="text-green-600">há 2min</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500">Progresso: 85%</div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">📦</span>
+                                    <h4 class="font-semibold">Mercado Livre</h4>
+                                </div>
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Ativo</span>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Produtos encontrados:</span>
+                                    <span class="font-semibold">2,789</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Última execução:</span>
+                                    <span class="text-green-600">há 1min</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500">Progresso: 92%</div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-2">🛍️</span>
+                                    <h4 class="font-semibold">Americanas</h4>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Aguardando</span>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Produtos encontrados:</span>
+                                    <span class="font-semibold">1,894</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Próxima execução:</span>
+                                    <span class="text-blue-600">em 8min</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                                <div class="text-xs text-gray-500">Pronto para execução</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration & Controls -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- New Scraper -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">➕ Adicionar Novo Bot</h3>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">🏪 Loja</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                    <option>Selecione uma loja</option>
+                                    <option>Amazon</option>
+                                    <option>Mercado Livre</option>
+                                    <option>Americanas</option>
+                                    <option>Casas Bahia</option>
+                                    <option>Magazine Luiza</option>
+                                    <option>Submarino</option>
+                                    <option>KaBuM!</option>
+                                    <option>Netshoes</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📂 Categorias</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2">
+                                        <span class="text-sm">📱 Eletrônicos</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2">
+                                        <span class="text-sm">🏠 Casa</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2">
+                                        <span class="text-sm">👔 Moda</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2">
+                                        <span class="text-sm">⚽ Esporte</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">⏰ Frequência</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                    <option>A cada 10 minutos</option>
+                                    <option>A cada 30 minutos</option>
+                                    <option>A cada 1 hora</option>
+                                    <option>A cada 6 horas</option>
+                                    <option>Diariamente</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                🚀 Criar Bot
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">⚡ Ações Rápidas</h3>
+                        
+                        <div class="space-y-4">
+                            <button class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                                🔄 Executar Todos os Bots
+                            </button>
+                            
+                            <button class="w-full bg-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                                ⏹️ Pausar Todos os Bots
+                            </button>
+                            
+                            <button class="w-full bg-yellow-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">
+                                🧹 Limpar Cache
+                            </button>
+                            
+                            <button class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                                📊 Exportar Dados
+                            </button>
+                        </div>
+
+                        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold mb-2">📈 Estatísticas Rápidas</h4>
+                            <div class="space-y-1 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Execuções hoje:</span>
+                                    <span class="font-semibold">144</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Produtos únicos:</span>
+                                    <span class="font-semibold">15,847</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Erros detectados:</span>
+                                    <span class="font-semibold text-red-600">3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">📋 Atividade Recente</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl">✅</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold">Amazon - Scraping concluído</span>
+                                    <span class="text-sm text-gray-500">há 2 minutos</span>
+                                </div>
+                                <p class="text-sm text-gray-600">234 novos produtos encontrados em Eletrônicos</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl">🔄</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold">Mercado Livre - Executando</span>
+                                    <span class="text-sm text-gray-500">há 1 minuto</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Progresso: 92% completo</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-yellow-50 rounded-lg">
+                            <div class="text-2xl">⚠️</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold">Americanas - Aguardando</span>
+                                    <span class="text-sm text-gray-500">há 5 minutos</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Próxima execução em 8 minutos</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 bg-red-50 rounded-lg">
+                            <div class="text-2xl">❌</div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-semibold">Casas Bahia - Erro detectado</span>
+                                    <span class="text-sm text-gray-500">há 15 minutos</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Rate limit atingido. Tentativa em 1 hora.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh stats every 30 seconds
+        setInterval(() => {
+            const stats = document.querySelectorAll('.text-2xl.font-bold');
+            stats.forEach(stat => {
+                if (stat.textContent.includes(',')) {
+                    const current = parseInt(stat.textContent.replace(/,/g, ''));
+                    const increment = Math.floor(Math.random() * 5);
+                    stat.textContent = (current + increment).toLocaleString();
+                }
+            });
+        }, 30000);
+    </script>
+</body>
+</html>

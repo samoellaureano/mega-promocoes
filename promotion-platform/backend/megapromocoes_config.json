@@ -1,0 +1,29 @@
+{
+  "settings": {
+    "platformName": "🔥 MegaPromoções Brasil 2026",
+    "contactEmail": "contato@megapromocoes.com.br",
+    "whatsappNumber": "+55 (11) 94567-8901",
+    "siteUrl": "https://megapromocoes.com.br",
+    "autoUpdate": true,
+    "analyticsEnabled": true,
+    "openaiKey": "sk-proj-4B7X9mK2pL8nQ4bV7qW1sE3uY6iO0rT2vF5aD8gH1jM9pQ3bV6xZ2cF5eH8kL1nP",
+    "twilioSid": "AC7f8b2e1d4c9b3f5e8a7d2c6b1a9e8f5c2",
+    "twilioToken": "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c",
+    "amazonKey": "AKIAYF7MKP2QR8S3T9V4B6N1",
+    "emailNotifications": true,
+    "whatsappAlerts": true,
+    "smsFailures": false,
+    "notifStartTime": "07:00",
+    "notifEndTime": "23:00",
+    "reportFrequency": "weekly",
+    "scrapingInterval": "10",
+    "whatsappLimit": "15000",
+    "cacheTtl": "1800",
+    "logRetention": "60"
+  },
+  "timestamp": "2026-02-02T19:40:43.297420",
+  "version": "2.1.0",
+  "platform": "MegaPromoções Brasil 2026",
+  "environment": "production",
+  "backup_count": 5
+}

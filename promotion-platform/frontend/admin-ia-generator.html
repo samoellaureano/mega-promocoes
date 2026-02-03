@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 IA Generator - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+        .typing { animation: typing 2s infinite; }
+        @keyframes typing {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 flex-shrink-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-xl">🔥</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+                </div>
+                
+                <nav>
+                    <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📊</span> Dashboard
+                    </a>
+                    <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🏷️</span> Promoções
+                    </a>
+                    <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                        <span class="mr-3">🤖</span> IA Generator
+                    </a>
+                    <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📱</span> WhatsApp
+                    </a>
+                    <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🕷️</span> Scraping
+                    </a>
+                    <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">⚙️</span> Configurações
+                    </a>
+                    <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📈</span> Analytics
+                    </a>
+                    <a href="admin-logs.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🔧</span> Logs
+                    </a>
+                    <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🌐</span> Ver Site
+                    </a>
+                    <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                        <span class="mr-3">🚪</span> Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">🤖 IA Generator</h1>
+                        <p class="text-gray-600">Gerar descrições carismáticas e engraçadas para promoções</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                            ✅ OpenAI Conectado
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 rounded-full">
+                                <span class="text-2xl">🤖</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Descrições Geradas</h3>
+                                <p class="text-2xl font-bold text-gray-900">4,521</p>
+                                <p class="text-green-600 text-sm">↗ +33% esta semana</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">⚡</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Tokens Usados</h3>
+                                <p class="text-2xl font-bold text-gray-900">892K</p>
+                                <p class="text-gray-500 text-sm">de 1M disponível</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">⭐</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Taxa de Aprovação</h3>
+                                <p class="text-2xl font-bold text-gray-900">94%</p>
+                                <p class="text-green-600 text-sm">Excelente qualidade</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Tempo Médio</h3>
+                                <p class="text-2xl font-bold text-gray-900">2.3s</p>
+                                <p class="text-green-600 text-sm">Muito rápido</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IA Generator -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Input Form -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">✨ Gerar Nova Descrição</h3>
+                        
+                        <form id="iaForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">🏷️ Nome do Produto</label>
+                                <input type="text" id="productName" placeholder="Ex: Smartphone Samsung Galaxy A54" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">💰 Preço Original</label>
+                                    <input type="number" id="originalPrice" placeholder="1899.00" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">🔥 Preço Promocional</label>
+                                    <input type="number" id="promoPrice" placeholder="1299.90" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📂 Categoria</label>
+                                <select id="category" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Selecione uma categoria</option>
+                                    <option value="eletronicos">📱 Eletrônicos</option>
+                                    <option value="casa">🏠 Casa e Jardim</option>
+                                    <option value="moda">👔 Moda e Beleza</option>
+                                    <option value="esporte">⚽ Esporte e Lazer</option>
+                                    <option value="alimentacao">🍕 Alimentação</option>
+                                    <option value="livros">📚 Livros</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">🎭 Estilo da Descrição</label>
+                                <select id="style" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                                    <option value="carismatico">😎 Carismático</option>
+                                    <option value="engracado">😂 Engraçado</option>
+                                    <option value="trocadilhos">🤡 Com Trocadilhos</option>
+                                    <option value="urgente">⚡ Urgente/FOMO</option>
+                                    <option value="emocional">❤️ Emocional</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📝 Informações Extras (Opcional)</label>
+                                <textarea id="extraInfo" rows="3" placeholder="Ex: Produto com 5G, câmera tripla, bateria de longa duração..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg hover:shadow-xl">
+                                <span id="generateBtnText">🚀 Gerar Descrição com IA</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">📝 Resultado Gerado</h3>
+                        
+                        <div id="loadingState" class="hidden text-center py-8">
+                            <div class="typing text-4xl mb-4">🤖</div>
+                            <p class="text-gray-600">IA gerando sua descrição carismática...</p>
+                            <div class="mt-4 bg-gray-200 rounded-full h-2">
+                                <div id="progressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <div id="resultArea" class="hidden">
+                            <div class="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-4 mb-4">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h4 class="font-semibold text-green-800">✨ Descrição Gerada:</h4>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">GPT-4</span>
+                                </div>
+                                <div id="generatedText" class="text-gray-800 leading-relaxed"></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-600" id="wordCount">0</div>
+                                    <div class="text-sm text-gray-600">Palavras</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-green-600" id="sentiment">😊</div>
+                                    <div class="text-sm text-gray-600">Sentimento</div>
+                                </div>
+                            </div>
+
+                            <div class="flex space-x-3">
+                                <button id="copyBtn" class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+                                    📋 Copiar
+                                </button>
+                                <button id="regenerateBtn" class="flex-1 bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors">
+                                    🔄 Regenerar
+                                </button>
+                                <button id="saveBtn" class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors">
+                                    💾 Salvar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="emptyState" class="text-center py-12 text-gray-500">
+                            <div class="text-6xl mb-4">🤖</div>
+                            <p>Preencha o formulário e clique em "Gerar Descrição" para começar!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Generations -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mt-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">📚 Descrições Recentes</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-900">Smartphone Samsung Galaxy A54</h4>
+                                <span class="text-sm text-gray-500">há 2 minutos</span>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">"🔥 Galera, preparem os corações! O Galaxy A54 chegou com tudo e está fazendo os preços derreterem mais que sorvete no verão! 📱✨ Com essa câmera tripla, suas selfies vão ficar tão perfeitas..."</p>
+                            <div class="flex items-center justify-between">
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Carismático</span>
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800 text-sm">📋 Copiar</button>
+                                    <button class="text-green-600 hover:text-green-800 text-sm">✏️ Editar</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-semibold text-gray-900">Smart TV 55" LG 4K</h4>
+                                <span class="text-sm text-gray-500">há 1 hora</span>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-3">"🍿 Pessoal, chegou a hora de transformar sua sala num cinema! Essa Smart TV da LG é tão grande que até o vizinho vai querer assistir pela janela! 😂📺 Com 4K, as imagens ficam tão nítidas..."</p>
+                            <div class="flex items-center justify-between">
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Engraçado</span>
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800 text-sm">📋 Copiar</button>
+                                    <button class="text-green-600 hover:text-green-800 text-sm">✏️ Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Mock IA responses
+        const mockResponses = {
+            carismatico: [
+                "🔥 Galera, preparem os corações! O {product} chegou com tudo e está fazendo os preços derreterem mais que sorvete no verão! 📱✨ Com {discount}% de desconto, é a oportunidade que você estava esperando para arrasar! 💰 De R$ {original} por apenas R$ {promo} - isso é praticamente um presente! 🎁 Corre que essa oferta é mais rápida que meme viralizando! 🚀",
+                "✨ Atenção, pessoas lindas! O {product} acabou de chegar na nossa plataforma e está causando mais alvoroço que Black Friday! 🛍️ Com {discount}% OFF, ele saiu de R$ {original} para R$ {promo} - é tanta economia que até minha carteira está feliz! 😍 Essa é daquelas ofertas que fazem você economizar e ainda ficar mais estiloso(a)! 💫"
+            ],
+            engracado: [
+                "😂 Gente, o {product} está tão barato que até minha sogra aprovou! 🤣 Saiu de R$ {original} para R$ {promo} - uma economia de {discount}% que deixa qualquer um mais feliz que criança na Disney! 🎢 Corre antes que o preço volte ao normal e você fique chorando igual eu vendo série triste! 😭📱",
+                "🍕 Pessoal, essa promoção do {product} é mais quente que pizza saindo do forno! 🔥 Com {discount}% de desconto, passou de R$ {original} para R$ {promo} - é tão barato que até o Papai Noel ia querer um desses! 🎅 Não perca tempo, porque oportunidade assim é mais rara que unicórnio em promoção! 🦄✨"
+            ],
+            trocadilhos: [
+                "📱 Que GALAXia de ofertas! O {product} está com preço espacial: de R$ {original} por R$ {promo}! 🚀 Com {discount}% de desconto, essa promoção não é um SAMSUNG qualquer - é realmente SMART demais! 💫 Não deixe essa chance passar em órbita! 🌟",
+                "📺 Essa promoção da {product} está tão LiGada que nem preciso explicar! ⚡ De R$ {original} por R$ {promo} - uma economia de {discount}% que vai deixar sua TV-ida muito melhor! 😄 Corre que essa oferta não vai ficar no AR para sempre! 📡✨"
+            ],
+            urgente: [
+                "🚨 ALERTA VERMELHO! ÚLTIMAS UNIDADES! 🚨 O {product} está voando das prateleiras! ⚡ Por apenas R$ {promo} (era R$ {original}), você economiza {discount}% AGORA! ⏰ Restam apenas 6 horas para acabar essa promoção INSANA! 🔥 NÃO PERCA ESSA OPORTUNIDADE ÚNICA! 💥",
+                "⚡ FLASH SALE IMPERDÍVEL! ⚡ O {product} nunca esteve tão barato! 🤯 De R$ {original} por APENAS R$ {promo} - {discount}% de economia REAL! ⏳ Oferta válida por tempo LIMITADÍSSIMO! Últimas 8 unidades em estoque! 📦 GARANTE JÁ A SUA! 🛒💨"
+            ],
+            emocional: [
+                "💝 Sabe aquele sonho que você guarda no coração? O {product} pode estar mais próximo do que imagina! ✨ Por R$ {promo} (antes R$ {original}), com {discount}% de carinho no desconto, é sua chance de realizar algo especial! 🌟 Porque você merece o melhor, sempre! 💕",
+                "🌈 Momentos especiais merecem produtos especiais! O {product} chegou para tornar seus dias mais felizes! 😊 Com amor e {discount}% de desconto, de R$ {original} por R$ {promo}! 💖 Invista na sua felicidade - você vale muito mais que isso! ✨🤗"
+            ]
+        };
+
+        // Form submission
+        document.getElementById('iaForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const productName = document.getElementById('productName').value;
+            const originalPrice = document.getElementById('originalPrice').value;
+            const promoPrice = document.getElementById('promoPrice').value;
+            const style = document.getElementById('style').value;
+            
+            if (!productName || !originalPrice || !promoPrice) {
+                alert('🚨 Por favor, preencha pelo menos o nome do produto e os preços!');
+                return;
+            }
+
+            const discount = Math.round(((originalPrice - promoPrice) / originalPrice) * 100);
+            
+            // Show loading
+            document.getElementById('emptyState').classList.add('hidden');
+            document.getElementById('resultArea').classList.add('hidden');
+            document.getElementById('loadingState').classList.remove('hidden');
+            
+            // Progress animation
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const interval = setInterval(() => {
+                progress += Math.random() * 30;
+                if (progress > 90) progress = 90;
+                progressBar.style.width = progress + '%';
+            }, 200);
+            
+            // Simulate API call
+            setTimeout(() => {
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                
+                // Generate response
+                const responses = mockResponses[style] || mockResponses.carismatico;
+                const template = responses[Math.floor(Math.random() * responses.length)];
+                const generated = template
+                    .replace(/{product}/g, productName)
+                    .replace(/{original}/g, parseFloat(originalPrice).toLocaleString('pt-BR', {minimumFractionDigits: 2}))
+                    .replace(/{promo}/g, parseFloat(promoPrice).toLocaleString('pt-BR', {minimumFractionDigits: 2}))
+                    .replace(/{discount}/g, discount);
+                
+                // Show result
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('resultArea').classList.remove('hidden');
+                document.getElementById('generatedText').innerHTML = generated;
+                document.getElementById('wordCount').textContent = generated.split(' ').length;
+                
+                // Update sentiment based on style
+                const sentiments = {
+                    carismatico: '😎',
+                    engracado: '😂',
+                    trocadilhos: '🤡',
+                    urgente: '🚨',
+                    emocional: '💕'
+                };
+                document.getElementById('sentiment').textContent = sentiments[style] || '😊';
+                
+            }, 3000);
+        });
+
+        // Copy button
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const text = document.getElementById('generatedText').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                this.innerHTML = '✅ Copiado!';
+                setTimeout(() => {
+                    this.innerHTML = '📋 Copiar';
+                }, 2000);
+            });
+        });
+
+        // Regenerate button
+        document.getElementById('regenerateBtn').addEventListener('click', function() {
+            document.getElementById('iaForm').dispatchEvent(new Event('submit'));
+        });
+
+        // Save button
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            alert('💾 Descrição salva com sucesso!\nVocê pode encontrá-la na seção "Descrições Recentes".');
+        });
+    </script>
+</body>
+</html>

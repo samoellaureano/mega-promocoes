@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Admin Dashboard - Plataforma de Promoções</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-gradient { background: linear-gradient(135deg, #1f2937, #374151, #4b5563); }
+        .stat-card { transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 sidebar-gradient text-white">
+            <div class="p-6">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🔥</span>
+                    <div>
+                        <h2 class="font-bold text-lg">Promoções</h2>
+                        <p class="text-gray-300 text-sm">Admin Panel</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="mt-8">
+                <div class="px-6 py-2">
+                    <p class="text-gray-400 uppercase text-xs font-semibold tracking-wider">Menu Principal</p>
+                </div>
+                <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                    <span class="mr-3">📊</span> Dashboard
+                </a>
+                <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">🏷️</span> Promoções
+                </a>
+                <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">🤖</span> IA Generator
+                </a>
+                <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">📱</span> WhatsApp
+                </a>
+                <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">🕷️</span> Scraping
+                </a>
+
+                <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">⚙️</span> Configurações
+                </a>
+                
+                <div class="px-6 py-2 mt-8">
+                    <p class="text-gray-400 uppercase text-xs font-semibold tracking-wider">Sistema</p>
+                </div>
+                <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">📈</span> Analytics
+                </a>
+                <a href="admin-logs.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">🔧</span> Logs
+                </a>
+                <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                    <span class="mr-3">🌐</span> Ver Site
+                </a>
+                <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                    <span class="mr-3">🚪</span> Logout
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">📊 Dashboard</h1>
+                        <p class="text-gray-600">Bem-vindo ao painel administrativo</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-2 text-sm text-green-600">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            <span>Sistema Online</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <img src="https://via.placeholder.com/40" alt="Admin" class="w-10 h-10 rounded-full">
+                            <div class="text-sm">
+                                <p class="font-medium">Admin</p>
+                                <p class="text-gray-500">Administrador</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Total Promoções -->
+                    <div class="stat-card bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">🏷️</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Promoções Ativas</h3>
+                                <p class="text-2xl font-bold text-gray-900">1,247</p>
+                                <p class="text-green-600 text-sm">↗ +12% este mês</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Usuários -->
+                    <div class="stat-card bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">👥</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Usuários Ativos</h3>
+                                <p class="text-2xl font-bold text-gray-900">8,492</p>
+                                <p class="text-green-600 text-sm">↗ +18% este mês</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="stat-card bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">📱</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Mensagens Enviadas</h3>
+                                <p class="text-2xl font-bold text-gray-900">23,891</p>
+                                <p class="text-green-600 text-sm">↗ +25% hoje</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IA Usage -->
+                    <div class="stat-card bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 rounded-full">
+                                <span class="text-2xl">🤖</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">IA Descriptions</h3>
+                                <p class="text-2xl font-bold text-gray-900">4,521</p>
+                                <p class="text-green-600 text-sm">↗ +33% esta semana</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                    <!-- Promoções Chart -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">📈 Promoções por Categoria</h3>
+                        <div class="h-64">
+                            <canvas id="promotionsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Engagement Chart -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">💬 Engajamento WhatsApp</h3>
+                        <div class="h-64">
+                            <canvas id="engagementChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">🔄 Atividade Recente</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                            <span class="text-green-500">✅</span>
+                            <div>
+                                <p class="font-medium">Nova promoção criada</p>
+                                <p class="text-sm text-gray-600">Notebook Gamer com 40% de desconto - há 5 minutos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                            <span class="text-blue-500">🤖</span>
+                            <div>
+                                <p class="font-medium">IA gerou nova descrição</p>
+                                <p class="text-sm text-gray-600">Descrição carismática para promoção de smartphone - há 12 minutos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                            <span class="text-yellow-500">📱</span>
+                            <div>
+                                <p class="font-medium">Campanha WhatsApp enviada</p>
+                                <p class="text-sm text-gray-600">2,341 mensagens enviadas com sucesso - há 25 minutos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded">
+                            <span class="text-purple-500">🕷️</span>
+                            <div>
+                                <p class="font-medium">Scraping concluído</p>
+                                <p class="text-sm text-gray-600">127 novas promoções coletadas de 5 lojas - há 1 hora</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button class="bg-blue-600 text-white p-4 rounded-lg hover:bg-blue-700 transition-colors">
+                        <span class="text-2xl">➕</span>
+                        <h4 class="font-semibold mt-2">Nova Promoção</h4>
+                        <p class="text-sm opacity-90">Adicionar promoção manualmente</p>
+                    </button>
+                    <button class="bg-green-600 text-white p-4 rounded-lg hover:bg-green-700 transition-colors">
+                        <span class="text-2xl">🚀</span>
+                        <h4 class="font-semibold mt-2">Iniciar Scraping</h4>
+                        <p class="text-sm opacity-90">Buscar novas ofertas</p>
+                    </button>
+                    <button class="bg-purple-600 text-white p-4 rounded-lg hover:bg-purple-700 transition-colors">
+                        <span class="text-2xl">📤</span>
+                        <h4 class="font-semibold mt-2">Enviar WhatsApp</h4>
+                        <p class="text-sm opacity-90">Campanha de divulgação</p>
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Dados mock para os gráficos
+        const promotionsData = {
+            labels: ['Eletrônicos', 'Casa', 'Moda', 'Esporte', 'Beleza'],
+            datasets: [{
+                label: 'Promoções',
+                data: [342, 189, 156, 98, 73],
+                backgroundColor: [
+                    '#3B82F6',
+                    '#10B981',
+                    '#F59E0B',
+                    '#EF4444',
+                    '#8B5CF6'
+                ]
+            }]
+        };
+
+        const engagementData = {
+            labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+            datasets: [{
+                label: 'Mensagens Enviadas',
+                data: [3200, 4100, 2800, 3900, 4500, 5200, 3700],
+                borderColor: '#10B981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.4
+            }]
+        };
+
+        // Criar gráficos
+        const ctx1 = document.getElementById('promotionsChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'doughnut',
+            data: promotionsData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        const ctx2 = document.getElementById('engagementChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: engagementData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Atualizar dados em tempo real (simulado)
+        setInterval(() => {
+            const statCards = document.querySelectorAll('.stat-card p:nth-child(2)');
+            statCards.forEach(card => {
+                if (card.textContent.includes(',')) {
+                    const currentValue = parseInt(card.textContent.replace(/,/g, ''));
+                    const newValue = currentValue + Math.floor(Math.random() * 10);
+                    card.textContent = newValue.toLocaleString();
+                }
+            });
+        }, 5000);
+    </script>
+</body>
+</html>

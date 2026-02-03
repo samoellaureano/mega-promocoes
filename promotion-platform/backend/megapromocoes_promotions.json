@@ -1,0 +1,111 @@
+{
+  "promotions": [
+    {
+      "id": "promo_001",
+      "title": "Smartphone Galaxy S24 128GB",
+      "description": "Smartphone Samsung Galaxy S24 com 128GB, tela 6.2\" Dynamic AMOLED",
+      "category": "Eletrônicos",
+      "store": "Amazon",
+      "originalPrice": 2999.0,
+      "promoPrice": 1899.0,
+      "discountPercent": 37,
+      "imageUrl": "https://via.placeholder.com/300x300?text=Galaxy+S24",
+      "productUrl": "https://amazon.com.br/samsung-galaxy-s24",
+      "status": "active",
+      "aiGenerated": false,
+      "aiText": "",
+      "expiresAt": "2026-02-05T19:52:46.498122",
+      "createdAt": "2026-02-02T19:52:46.498140",
+      "updatedAt": "2026-02-02T19:52:46.498142"
+    },
+    {
+      "id": "promo_002",
+      "title": "Notebook Gamer RTX 4060 16GB RAM",
+      "description": "Notebook Gamer com GeForce RTX 4060, 16GB RAM, SSD 512GB",
+      "category": "Eletrônicos",
+      "store": "Mercado Livre",
+      "originalPrice": 4999.0,
+      "promoPrice": 2999.0,
+      "discountPercent": 40,
+      "imageUrl": "https://via.placeholder.com/300x300?text=Notebook+RTX",
+      "productUrl": "https://mercadolivre.com.br/notebook-gamer-rtx",
+      "status": "active",
+      "aiGenerated": true,
+      "aiText": "🎮 MEGA OFERTA GAMER! 🔥 Notebook com RTX 4060 que vai fazer você dominar todos os games! Performance de outro mundo por um preço que não vai voltar! 🚀",
+      "expiresAt": "2026-02-03T19:52:46.498145",
+      "createdAt": "2026-02-01T19:52:46.498147",
+      "updatedAt": "2026-02-02T19:52:46.498150"
+    },
+    {
+      "id": "promo_003",
+      "title": "Smart TV 55\" 4K UHD",
+      "description": "Smart TV LED 55\" 4K UHD com HDR e Sistema Android TV",
+      "category": "Eletrônicos",
+      "store": "Americanas",
+      "originalPrice": 2499.0,
+      "promoPrice": 1799.0,
+      "discountPercent": 28,
+      "imageUrl": "https://via.placeholder.com/300x300?text=Smart+TV+55",
+      "productUrl": "https://americanas.com.br/smart-tv-55-4k",
+      "status": "expiring_soon",
+      "aiGenerated": false,
+      "aiText": "",
+      "expiresAt": "2026-02-02T21:52:46.498152",
+      "createdAt": "2026-01-31T19:52:46.498157",
+      "updatedAt": "2026-02-02T19:52:46.498159"
+    },
+    {
+      "id": "promo_004",
+      "title": "AirPods Pro 2ª Geração",
+      "description": "Apple AirPods Pro com Cancelamento Ativo de Ruído",
+      "category": "Eletrônicos",
+      "store": "Amazon",
+      "originalPrice": 1299.0,
+      "promoPrice": 899.0,
+      "discountPercent": 31,
+      "imageUrl": "https://via.placeholder.com/300x300?text=AirPods+Pro",
+      "productUrl": "https://amazon.com.br/airpods-pro-2",
+      "status": "active",
+      "aiGenerated": true,
+      "aiText": "🎵 MÚSICA PERFEITA! 🍎 AirPods Pro que vão transformar seu mundo sonoro! Cancelamento de ruído que é pura magia! Aproveite antes que acabe! ⚡",
+      "expiresAt": "2026-02-07T19:52:46.498162",
+      "createdAt": "2026-02-02T16:52:46.498164",
+      "updatedAt": "2026-02-02T19:52:46.498166"
+    },
+    {
+      "id": "promo_005",
+      "title": "Cafeteira Nespresso Essenza Mini",
+      "description": "Cafeteira Nespresso Essenza Mini com 14 Cápsulas",
+      "category": "Casa",
+      "store": "Magazine Luiza",
+      "originalPrice": 399.0,
+      "promoPrice": 249.0,
+      "discountPercent": 38,
+      "imageUrl": "https://via.placeholder.com/300x300?text=Nespresso+Mini",
+      "productUrl": "https://magazineluiza.com.br/cafeteira-nespresso",
+      "status": "inactive",
+      "aiGenerated": false,
+      "aiText": "",
+      "expiresAt": "2026-02-02T18:52:46.498169",
+      "createdAt": "2026-01-30T19:52:46.498172",
+      "updatedAt": "2026-02-02T18:52:46.498174"
+    }
+  ],
+  "stats": {
+    "totalPromotions": 5,
+    "activePromotions": 3,
+    "expiredPromotions": 1,
+    "expiringPromotions": 1,
+    "averageDiscount": 34.8,
+    "topStores": [
+      "Amazon",
+      "Mercado Livre",
+      "Americanas"
+    ],
+    "topCategories": [
+      "Eletrônicos",
+      "Casa"
+    ]
+  },
+  "lastUpdated": "2026-02-02T19:52:46.498178"
+}

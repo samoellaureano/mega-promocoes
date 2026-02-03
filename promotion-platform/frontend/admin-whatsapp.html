@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 WhatsApp - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+        .whatsapp-bubble { background: #DCF8C6; }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 flex-shrink-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-xl">🔥</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+                </div>
+                
+                <nav>
+                    <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📊</span> Dashboard
+                    </a>
+                    <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🏷️</span> Promoções
+                    </a>
+                    <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🤖</span> IA Generator
+                    </a>
+                    <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                        <span class="mr-3">📱</span> WhatsApp
+                    </a>
+                    <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🕷️</span> Scraping
+                    </a>
+                    <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">⚙️</span> Configurações
+                    </a>
+                    <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📈</span> Analytics
+                    </a>
+                    <a href="admin-logs.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🔧</span> Logs
+                    </a>
+                    <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🌐</span> Ver Site
+                    </a>
+                    <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                        <span class="mr-3">🚪</span> Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">📱 WhatsApp Manager</h1>
+                        <p class="text-gray-600">Gerenciar campanhas e envios automatizados</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold pulse">
+                            ✅ Twilio Conectado
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                <!-- Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">📱</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Mensagens Enviadas</h3>
+                                <p class="text-2xl font-bold text-gray-900">23,891</p>
+                                <p class="text-green-600 text-sm">↗ +25% hoje</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">👥</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Contatos Ativos</h3>
+                                <p class="text-2xl font-bold text-gray-900">8,492</p>
+                                <p class="text-green-600 text-sm">↗ +18% esta semana</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">📊</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Taxa de Abertura</h3>
+                                <p class="text-2xl font-bold text-gray-900">94.2%</p>
+                                <p class="text-green-600 text-sm">Excelente engajamento</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-purple-100 rounded-full">
+                                <span class="text-2xl">🎯</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Cliques em Links</h3>
+                                <p class="text-2xl font-bold text-gray-900">12,453</p>
+                                <p class="text-green-600 text-sm">↗ +31% conversão</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Actions -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Send Campaign -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">🚀 Nova Campanha</h3>
+                        
+                        <form id="campaignForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📋 Selecionar Promoções</label>
+                                <div class="space-y-2 max-h-32 overflow-y-auto border border-gray-200 rounded-md p-3">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="1">
+                                        <span class="text-sm">📱 Smartphone Samsung Galaxy A54 - 32% OFF</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="2">
+                                        <span class="text-sm">📺 Smart TV LG 55" 4K - 28% OFF</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="3">
+                                        <span class="text-sm">💻 Notebook Acer Aspire 5 - 27% OFF</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" class="mr-2" value="4">
+                                        <span class="text-sm">👟 Tênis Nike Air Max 90 - 50% OFF</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">👥 Público Alvo</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500">
+                                    <option>Todos os contatos (8,492)</option>
+                                    <option>Interessados em Eletrônicos (3,241)</option>
+                                    <option>Interessados em Moda (2,156)</option>
+                                    <option>Compradores Ativos (1,890)</option>
+                                    <option>Segmento VIP (567)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📅 Agendamento</label>
+                                <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500">
+                                    <option>Enviar agora</option>
+                                    <option>Agendar para mais tarde</option>
+                                    <option>Envio recorrente</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-all shadow-lg hover:shadow-xl">
+                                📤 Enviar Campanha
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Message Preview -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-6">👁️ Preview da Mensagem</h3>
+                        
+                        <div class="bg-gray-100 rounded-lg p-4 mb-4">
+                            <div class="bg-white rounded-lg p-3 shadow-sm">
+                                <div class="flex items-center mb-3">
+                                    <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-sm">🔥</span>
+                                    </div>
+                                    <div class="ml-3">
+                                        <div class="font-semibold text-sm">Promoções</div>
+                                        <div class="text-xs text-gray-500">agora</div>
+                                    </div>
+                                </div>
+                                
+                                <div id="messagePreview" class="whatsapp-bubble p-3 rounded-lg">
+                                    <p class="text-sm mb-2">🔥 <strong>OFERTAS IMPERDÍVEIS!</strong></p>
+                                    <p class="text-sm mb-2">Oi! Separamos as melhores promoções só para você:</p>
+                                    <div id="promotionsList" class="text-sm space-y-1 mb-2">
+                                        <!-- Dynamic content -->
+                                    </div>
+                                    <p class="text-sm">💰 Não perca essas oportunidades!</p>
+                                    <p class="text-xs text-gray-600 mt-2">🚀 Clique nos links para ver as ofertas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div class="flex justify-between">
+                                <span>Estimativa de alcance:</span>
+                                <span class="font-semibold">8,492 contatos</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Taxa de abertura esperada:</span>
+                                <span class="font-semibold text-green-600">94.2%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Cliques esperados:</span>
+                                <span class="font-semibold text-blue-600">~2,600 cliques</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Campaigns -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">📊 Campanhas Recentes</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Data/Hora</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Título</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Contatos</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Enviadas</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Abertas</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Cliques</th>
+                                    <th class="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">Hoje 14:30</td>
+                                    <td class="py-3 px-4">🔥 Super Ofertas de Eletrônicos</td>
+                                    <td class="py-3 px-4">3,241</td>
+                                    <td class="py-3 px-4">3,241</td>
+                                    <td class="py-3 px-4 text-green-600">3,052 (94.2%)</td>
+                                    <td class="py-3 px-4 text-blue-600">1,234 (40.4%)</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Concluído</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">Hoje 10:15</td>
+                                    <td class="py-3 px-4">👟 Promoções de Moda</td>
+                                    <td class="py-3 px-4">2,156</td>
+                                    <td class="py-3 px-4">2,156</td>
+                                    <td class="py-3 px-4 text-green-600">2,034 (94.3%)</td>
+                                    <td class="py-3 px-4 text-blue-600">891 (43.8%)</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Concluído</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-3 px-4">Ontem 18:45</td>
+                                    <td class="py-3 px-4">🏠 Casa e Jardim em Oferta</td>
+                                    <td class="py-3 px-4">8,492</td>
+                                    <td class="py-3 px-4">8,492</td>
+                                    <td class="py-3 px-4 text-green-600">7,998 (94.2%)</td>
+                                    <td class="py-3 px-4 text-blue-600">2,879 (36.0%)</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Concluído</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4">Agendado 20:00</td>
+                                    <td class="py-3 px-4">🌙 Ofertas Noturnas</td>
+                                    <td class="py-3 px-4">8,492</td>
+                                    <td class="py-3 px-4">-</td>
+                                    <td class="py-3 px-4">-</td>
+                                    <td class="py-3 px-4">-</td>
+                                    <td class="py-3 px-4">
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Agendado</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Contact Management -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">👥 Gerenciar Contatos</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-blue-100 p-4 rounded-lg mb-3">
+                                <span class="text-3xl">📋</span>
+                            </div>
+                            <h4 class="font-semibold mb-2">Importar Contatos</h4>
+                            <p class="text-sm text-gray-600 mb-3">Upload de lista CSV ou Excel</p>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                                📁 Selecionar Arquivo
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="bg-green-100 p-4 rounded-lg mb-3">
+                                <span class="text-3xl">🔗</span>
+                            </div>
+                            <h4 class="font-semibold mb-2">Link de Inscrição</h4>
+                            <p class="text-sm text-gray-600 mb-3">Gerar link para novos contatos</p>
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
+                                🔗 Gerar Link
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="bg-red-100 p-4 rounded-lg mb-3">
+                                <span class="text-3xl">🧹</span>
+                            </div>
+                            <h4 class="font-semibold mb-2">Limpar Lista</h4>
+                            <p class="text-sm text-gray-600 mb-3">Remover contatos inativos</p>
+                            <button class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors">
+                                🗑️ Limpar Inativos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Form submission
+        document.getElementById('campaignForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkboxes.length === 0) {
+                alert('🚨 Por favor, selecione pelo menos uma promoção para enviar!');
+                return;
+            }
+
+            // Show loading and success
+            const button = e.target.querySelector('button[type="submit"]');
+            button.innerHTML = '⏳ Enviando...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                alert('📱 Campanha enviada com sucesso!\n\n✅ 8,492 mensagens enviadas\n📊 Taxa de entrega: 99.2%\n⚡ Tempo total: 2 minutos');
+                button.innerHTML = '📤 Enviar Campanha';
+                button.disabled = false;
+                
+                // Reset form
+                e.target.reset();
+                updatePreview();
+            }, 3000);
+        });
+
+        // Update preview when checkboxes change
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePreview);
+        });
+
+        function updatePreview() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const promotionsList = document.getElementById('promotionsList');
+            
+            if (checkboxes.length === 0) {
+                promotionsList.innerHTML = '<em class="text-gray-500">Selecione promoções para visualizar...</em>';
+                return;
+            }
+
+            let html = '';
+            checkboxes.forEach((checkbox, index) => {
+                const label = checkbox.nextElementSibling.textContent;
+                html += `<div>• ${label}</div>`;
+            });
+            
+            promotionsList.innerHTML = html;
+        }
+
+        // Initialize preview
+        updatePreview();
+    </script>
+</body>
+</html>

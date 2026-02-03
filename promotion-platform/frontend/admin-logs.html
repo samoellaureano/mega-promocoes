@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 Logs - Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+        .log-error { background-color: #fef2f2; border-left: 4px solid #ef4444; }
+        .log-warning { background-color: #fffbeb; border-left: 4px solid #f59e0b; }
+        .log-info { background-color: #eff6ff; border-left: 4px solid #3b82f6; }
+        .log-success { background-color: #f0fdf4; border-left: 4px solid #10b981; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 w-64 flex-shrink-0">
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-xl">🔥</span>
+                    </div>
+                    <h2 class="text-white text-xl font-bold">Admin Panel</h2>
+                </div>
+                
+                <nav>
+                    <a href="admin-dashboard.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📊</span> Dashboard
+                    </a>
+                    <a href="admin-promotions.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🏷️</span> Promoções
+                    </a>
+                    <a href="admin-ia-generator.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🤖</span> IA Generator
+                    </a>
+                    <a href="admin-whatsapp.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📱</span> WhatsApp
+                    </a>
+                    <a href="admin-scraping.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🕷️</span> Scraping
+                    </a>
+                    <a href="admin-settings.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">⚙️</span> Configurações
+                    </a>
+                    <a href="admin-analytics.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">📈</span> Analytics
+                    </a>
+                    <a href="admin-logs.html" class="flex items-center px-6 py-3 text-white bg-gray-700">
+                        <span class="mr-3">🔧</span> Logs
+                    </a>
+                    <a href="index.html" class="flex items-center px-6 py-3 text-gray-300 hover:text-white hover:bg-gray-700">
+                        <span class="mr-3">🌐</span> Ver Site
+                    </a>
+                    <a href="admin-login.html" class="flex items-center px-6 py-3 text-red-300 hover:text-red-200 hover:bg-red-700">
+                        <span class="mr-3">🚪</span> Logout
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Header -->
+            <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">🔧 Sistema de Logs</h1>
+                        <p class="text-gray-600">Monitore atividades e erros do sistema em tempo real</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="refreshLogs()" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            🔄 Atualizar
+                        </button>
+                        <button onclick="clearLogs()" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                            🗑️ Limpar Logs
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6">
+                <!-- Log Summary -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-red-100 rounded-full">
+                                <span class="text-2xl">❌</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Erros (24h)</h3>
+                                <p class="text-2xl font-bold text-red-600">23</p>
+                                <p class="text-red-600 text-sm">↗ +3 vs ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-yellow-100 rounded-full">
+                                <span class="text-2xl">⚠️</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Avisos (24h)</h3>
+                                <p class="text-2xl font-bold text-yellow-600">67</p>
+                                <p class="text-yellow-600 text-sm">↗ +12 vs ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-blue-100 rounded-full">
+                                <span class="text-2xl">ℹ️</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Info (24h)</h3>
+                                <p class="text-2xl font-bold text-blue-600">1.2K</p>
+                                <p class="text-blue-600 text-sm">↗ +234 vs ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 bg-green-100 rounded-full">
+                                <span class="text-2xl">✅</span>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm font-medium">Sucesso (24h)</h3>
+                                <p class="text-2xl font-bold text-green-600">8.9K</p>
+                                <p class="text-green-600 text-sm">↗ +445 vs ontem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Log Filters -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">🔍 Filtros</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <select id="logLevel" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todos os níveis</option>
+                            <option value="error">❌ Erros</option>
+                            <option value="warning">⚠️ Avisos</option>
+                            <option value="info">ℹ️ Informações</option>
+                            <option value="success">✅ Sucesso</option>
+                        </select>
+                        <select id="logCategory" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todas as categorias</option>
+                            <option value="auth">🔐 Autenticação</option>
+                            <option value="database">🗄️ Banco de Dados</option>
+                            <option value="api">🌐 API</option>
+                            <option value="scraping">🕷️ Scraping</option>
+                            <option value="whatsapp">📱 WhatsApp</option>
+                            <option value="ia">🤖 IA</option>
+                        </select>
+                        <input type="datetime-local" id="dateFrom" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <input type="datetime-local" id="dateTo" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <!-- Real-time Logs -->
+                <div class="bg-white rounded-lg shadow-sm">
+                    <div class="p-6 border-b border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900">📋 Logs do Sistema</h3>
+                            <div class="flex items-center space-x-2">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    🟢 Tempo Real
+                                </span>
+                                <button onclick="toggleAutoRefresh()" id="autoRefreshBtn" class="px-3 py-1 bg-gray-200 text-gray-700 rounded text-sm hover:bg-gray-300">
+                                    ⏸️ Pausar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="max-h-96 overflow-y-auto" id="logContainer">
+                        <!-- Logs dinamicos serão inseridos aqui -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        let autoRefresh = true;
+        let logData = [
+            {
+                id: 1,
+                timestamp: new Date(),
+                level: 'error',
+                category: 'database',
+                message: 'Falha na conexão com o banco de dados - Timeout após 30s',
+                details: 'Connection timeout: Unable to connect to database server at localhost:3306'
+            },
+            {
+                id: 2,
+                timestamp: new Date(Date.now() - 60000),
+                level: 'warning',
+                category: 'scraping',
+                message: 'Bot de scraping atingiu limite de rate',
+                details: 'Rate limit reached for domain mercadolivre.com.br - Next attempt in 5 minutes'
+            },
+            {
+                id: 3,
+                timestamp: new Date(Date.now() - 120000),
+                level: 'success',
+                category: 'whatsapp',
+                message: 'Mensagem enviada com sucesso',
+                details: 'WhatsApp message sent to +5511999998888 - Campaign: Black Friday 2024'
+            },
+            {
+                id: 4,
+                timestamp: new Date(Date.now() - 180000),
+                level: 'info',
+                category: 'ia',
+                message: 'Descrição gerada pela IA',
+                details: 'AI generated description for product: Smartphone Samsung A54 - Style: Engraçado'
+            },
+            {
+                id: 5,
+                timestamp: new Date(Date.now() - 240000),
+                level: 'error',
+                category: 'auth',
+                message: 'Tentativa de login inválida',
+                details: 'Failed login attempt from IP: 192.168.1.100 - User: admin@example.com'
+            },
+            {
+                id: 6,
+                timestamp: new Date(Date.now() - 300000),
+                level: 'success',
+                category: 'api',
+                message: 'API response enviada com sucesso',
+                details: 'GET /api/promotions - 200 OK - Response time: 234ms'
+            },
+            {
+                id: 7,
+                timestamp: new Date(Date.now() - 360000),
+                level: 'warning',
+                category: 'database',
+                message: 'Query lenta detectada',
+                details: 'Slow query detected: SELECT * FROM promotions WHERE active = 1 - Execution time: 2.5s'
+            },
+            {
+                id: 8,
+                timestamp: new Date(Date.now() - 420000),
+                level: 'info',
+                category: 'scraping',
+                message: 'Nova promoção encontrada',
+                details: 'New promotion scraped from amazon.com.br - Product: Smart TV LG 55" - Discount: 28%'
+            }
+        ];
+
+        function getLevelIcon(level) {
+            switch(level) {
+                case 'error': return '❌';
+                case 'warning': return '⚠️';
+                case 'info': return 'ℹ️';
+                case 'success': return '✅';
+                default: return '📝';
+            }
+        }
+
+        function getCategoryIcon(category) {
+            switch(category) {
+                case 'auth': return '🔐';
+                case 'database': return '🗄️';
+                case 'api': return '🌐';
+                case 'scraping': return '🕷️';
+                case 'whatsapp': return '📱';
+                case 'ia': return '🤖';
+                default: return '📋';
+            }
+        }
+
+        function renderLogs() {
+            const container = document.getElementById('logContainer');
+            const levelFilter = document.getElementById('logLevel').value;
+            const categoryFilter = document.getElementById('logCategory').value;
+            
+            let filteredLogs = logData;
+            
+            if (levelFilter !== 'all') {
+                filteredLogs = filteredLogs.filter(log => log.level === levelFilter);
+            }
+            
+            if (categoryFilter !== 'all') {
+                filteredLogs = filteredLogs.filter(log => log.category === categoryFilter);
+            }
+            
+            container.innerHTML = filteredLogs.map(log => `
+                <div class="log-${log.level} p-4 mb-2 mx-4">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-lg">${getLevelIcon(log.level)}</span>
+                            <div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm font-medium text-gray-700">
+                                        ${getCategoryIcon(log.category)} ${log.category.toUpperCase()}
+                                    </span>
+                                    <span class="text-xs text-gray-500">
+                                        ${log.timestamp.toLocaleString()}
+                                    </span>
+                                </div>
+                                <div class="mt-1 text-sm text-gray-900 font-medium">${log.message}</div>
+                                <div class="mt-1 text-xs text-gray-600">${log.details}</div>
+                            </div>
+                        </div>
+                        <button onclick="viewLogDetails(${log.id})" class="text-xs text-blue-600 hover:text-blue-800">
+                            Ver detalhes
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function refreshLogs() {
+            // Simular novos logs
+            const newLog = {
+                id: logData.length + 1,
+                timestamp: new Date(),
+                level: ['error', 'warning', 'info', 'success'][Math.floor(Math.random() * 4)],
+                category: ['auth', 'database', 'api', 'scraping', 'whatsapp', 'ia'][Math.floor(Math.random() * 6)],
+                message: 'Nova entrada de log gerada automaticamente',
+                details: 'Log entry generated at ' + new Date().toLocaleString()
+            };
+            
+            logData.unshift(newLog);
+            renderLogs();
+        }
+
+        function clearLogs() {
+            if (confirm('Tem certeza que deseja limpar todos os logs? Esta ação não pode ser desfeita.')) {
+                logData = [];
+                renderLogs();
+            }
+        }
+
+        function toggleAutoRefresh() {
+            autoRefresh = !autoRefresh;
+            const btn = document.getElementById('autoRefreshBtn');
+            btn.textContent = autoRefresh ? '⏸️ Pausar' : '▶️ Continuar';
+            
+            if (autoRefresh) {
+                startAutoRefresh();
+            }
+        }
+
+        function startAutoRefresh() {
+            if (autoRefresh) {
+                refreshLogs();
+                setTimeout(startAutoRefresh, 5000); // Refresh a cada 5 segundos
+            }
+        }
+
+        function viewLogDetails(logId) {
+            const log = logData.find(l => l.id === logId);
+            if (log) {
+                alert(`Detalhes do Log:\n\nID: ${log.id}\nTimestamp: ${log.timestamp.toLocaleString()}\nNível: ${log.level}\nCategoria: ${log.category}\nMensagem: ${log.message}\nDetalhes: ${log.details}`);
+            }
+        }
+
+        // Event listeners para filtros
+        document.getElementById('logLevel').addEventListener('change', renderLogs);
+        document.getElementById('logCategory').addEventListener('change', renderLogs);
+
+        // Inicializar
+        renderLogs();
+        startAutoRefresh();
+    </script>
+</body>
+</html>

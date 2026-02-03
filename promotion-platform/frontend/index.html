@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Melhores Promoções e Ofertas - Plataforma de Promoções</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="maintenance-check.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .fire-gradient { background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02); }
+        .promotion-card { transition: all 0.3s ease; }
+        .promotion-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .discount-badge { 
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            transform: rotate(-10deg);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+        .whatsapp-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- WhatsApp Header -->
+    <div class="bg-green-600 text-white py-3 text-center whatsapp-pulse">
+        <div class="container mx-auto px-4 flex items-center justify-center space-x-3">
+            <span class="text-xl">📱</span>
+            <span class="font-semibold">Receba as MELHORES OFERTAS no WhatsApp!</span>
+            <a href="https://wa.me/5511999999999" target="_blank" class="bg-white text-green-600 px-4 py-1 rounded-full font-bold hover:bg-gray-100 transition-colors">
+                ENTRAR NO GRUPO
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="fire-gradient p-2 rounded-lg">
+                        <span class="text-2xl">🔥</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Promoções</h1>
+                        <p class="text-sm text-gray-600">As melhores ofertas em um só lugar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search and Filters -->
+    <div class="bg-white shadow-sm border-b border-gray-200 py-4">
+        <div class="container mx-auto px-4">
+            <!-- Search Bar -->
+            <div class="mb-4">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="🔍 Buscar produtos, marcas ou lojas..."
+                        class="w-full px-12 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-orange-200 focus:border-orange-500 transition-all text-lg"
+                    >
+                    <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl">🔍</span>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap items-center gap-4">
+                <!-- Category Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">📂 Categoria</label>
+                    <select id="categoryFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500">
+                        <option value="">Todas as categorias</option>
+                        <option value="eletronicos">📱 Eletrônicos</option>
+                        <option value="casa">🏠 Casa e Jardim</option>
+                        <option value="moda">👔 Moda e Beleza</option>
+                        <option value="esporte">⚽ Esporte e Lazer</option>
+                        <option value="alimentacao">🍕 Alimentação</option>
+                        <option value="livros">📚 Livros</option>
+                    </select>
+                </div>
+
+                <!-- Price Range -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">💰 Preço máximo</label>
+                    <select id="priceFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500">
+                        <option value="">Qualquer preço</option>
+                        <option value="50">Até R$ 50</option>
+                        <option value="100">Até R$ 100</option>
+                        <option value="250">Até R$ 250</option>
+                        <option value="500">Até R$ 500</option>
+                        <option value="1000">Até R$ 1.000</option>
+                        <option value="2000">Até R$ 2.000</option>
+                    </select>
+                </div>
+
+                <!-- Discount Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">🏷️ Desconto mínimo</label>
+                    <select id="discountFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500">
+                        <option value="">Qualquer desconto</option>
+                        <option value="10">10% ou mais</option>
+                        <option value="20">20% ou mais</option>
+                        <option value="30">30% ou mais</option>
+                        <option value="50">50% ou mais</option>
+                        <option value="70">70% ou mais</option>
+                    </select>
+                </div>
+
+                <!-- Sort -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">📊 Ordenar por</label>
+                    <select id="sortFilter" class="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500">
+                        <option value="newest">🆕 Mais recente</option>
+                        <option value="discount-desc">🔥 Maior desconto</option>
+                        <option value="price-asc">💰 Menor preço</option>
+                        <option value="price-desc">💎 Maior preço</option>
+                        <option value="popular">⭐ Mais popular</option>
+                    </select>
+                </div>
+
+                <!-- Clear Filters -->
+                <div class="flex items-end">
+                    <button id="clearFilters" class="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors">
+                        🗑️ Limpar filtros
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="bg-gradient-to-r from-orange-100 to-red-100 py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between text-sm">
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-green-600 font-semibold">✅ <span id="activePromotionsCount">847</span></span>
+                        <span class="text-gray-600">promoções ativas</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-blue-600 font-semibold">💾 <span id="totalSavingsCount">R$ 2.3M</span></span>
+                        <span class="text-gray-600">em economia total</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 text-gray-600">
+                    <span>🔄 Atualizado há</span>
+                    <span id="lastUpdate" class="font-semibold">5 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotions Grid -->
+    <main class="container mx-auto px-4 py-8">
+        <div id="loadingIndicator" class="text-center py-12 hidden">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
+            <p class="mt-4 text-gray-600">Carregando as melhores ofertas...</p>
+        </div>
+
+        <div id="promotionsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Promotions will be inserted here by JavaScript -->
+        </div>
+
+        <!-- No Results -->
+        <div id="noResults" class="text-center py-12 hidden">
+            <div class="text-6xl mb-4">🤷‍♂️</div>
+            <h3 class="text-xl font-semibold text-gray-700 mb-2">Nenhuma promoção encontrada</h3>
+            <p class="text-gray-600 mb-4">Tente ajustar os filtros ou fazer uma nova busca</p>
+            <button onclick="clearAllFilters()" class="bg-orange-600 text-white px-6 py-2 rounded-lg hover:bg-orange-700 transition-colors">
+                Limpar todos os filtros
+            </button>
+        </div>
+
+        <!-- Load More -->
+        <div class="text-center mt-12">
+            <button id="loadMoreBtn" class="bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all shadow-lg hover:shadow-xl">
+                📦 Carregar mais ofertas
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <div class="fire-gradient p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-2xl">🔥</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Plataforma de Promoções</h3>
+                <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                    Encontramos as melhores ofertas da internet para você economizar dinheiro! 
+                    Cupons, descontos e promoções verificadas diariamente.
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                        📱 WhatsApp
+                    </a>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    © 2024 Plataforma de Promoções - Todos os direitos reservados
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mock data for promotions
+        const mockPromotions = [
+            {
+                id: 1,
+                title: "Smartphone Samsung Galaxy A54 128GB",
+                originalPrice: 1899.00,
+                promoPrice: 1299.90,
+                discountPercent: 32,
+                category: "eletronicos",
+                store: "Amazon",
+                imageUrl: "https://via.placeholder.com/300x300/3B82F6/FFFFFF?text=Galaxy+A54",
+                affiliateLink: "https://amzn.to/exemplo1",
+                isActive: true,
+                createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+                views: 1247,
+                clicks: 89
+            },
+            {
+                id: 2,
+                title: "Smart TV LED 55\" LG 4K UHD",
+                originalPrice: 2499.00,
+                promoPrice: 1799.99,
+                discountPercent: 28,
+                category: "eletronicos",
+                store: "Mercado Livre",
+                imageUrl: "https://via.placeholder.com/300x300/10B981/FFFFFF?text=Smart+TV+LG",
+                affiliateLink: "https://mercadolivre.com/exemplo2",
+                isActive: true,
+                createdAt: new Date(Date.now() - 4 * 60 * 60 * 1000),
+                views: 2341,
+                clicks: 156
+            },
+            {
+                id: 3,
+                title: "Notebook Acer Aspire 5 i5 8GB 256GB SSD",
+                originalPrice: 3299.99,
+                promoPrice: 2399.90,
+                discountPercent: 27,
+                category: "eletronicos",
+                store: "Americanas",
+                imageUrl: "https://via.placeholder.com/300x300/F59E0B/FFFFFF?text=Acer+Aspire",
+                affiliateLink: "https://americanas.com.br/exemplo3",
+                isActive: true,
+                createdAt: new Date(Date.now() - 6 * 60 * 60 * 1000),
+                views: 892,
+                clicks: 67
+            },
+            {
+                id: 4,
+                title: "Tênis Nike Air Max 90 Masculino",
+                originalPrice: 599.99,
+                promoPrice: 299.99,
+                discountPercent: 50,
+                category: "moda",
+                store: "Netshoes",
+                imageUrl: "https://via.placeholder.com/300x300/EF4444/FFFFFF?text=Nike+Air+Max",
+                affiliateLink: "https://netshoes.com.br/exemplo4",
+                isActive: true,
+                createdAt: new Date(Date.now() - 1 * 60 * 60 * 1000),
+                views: 3456,
+                clicks: 234
+            },
+            {
+                id: 5,
+                title: "Cafeteira Nespresso Essenza Mini",
+                originalPrice: 299.90,
+                promoPrice: 189.90,
+                discountPercent: 37,
+                category: "casa",
+                store: "Magazine Luiza",
+                imageUrl: "https://via.placeholder.com/300x300/8B5CF6/FFFFFF?text=Nespresso",
+                affiliateLink: "https://magazineluiza.com.br/exemplo5",
+                isActive: true,
+                createdAt: new Date(Date.now() - 3 * 60 * 60 * 1000),
+                views: 567,
+                clicks: 45
+            },
+            {
+                id: 6,
+                title: "Fone Bluetooth JBL Tune 510BT",
+                originalPrice: 199.99,
+                promoPrice: 119.99,
+                discountPercent: 40,
+                category: "eletronicos",
+                store: "Casas Bahia",
+                imageUrl: "https://via.placeholder.com/300x300/06B6D4/FFFFFF?text=JBL+Fone",
+                affiliateLink: "https://casasbahia.com.br/exemplo6",
+                isActive: true,
+                createdAt: new Date(Date.now() - 30 * 60 * 1000),
+                views: 1834,
+                clicks: 123
+            },
+            {
+                id: 7,
+                title: "Kit Panelas Antiaderente 5 Peças Tramontina",
+                originalPrice: 189.90,
+                promoPrice: 99.90,
+                discountPercent: 47,
+                category: "casa",
+                store: "Submarino",
+                imageUrl: "https://via.placeholder.com/300x300/84CC16/FFFFFF?text=Panelas+Tramontina",
+                affiliateLink: "https://submarino.com.br/exemplo7",
+                isActive: true,
+                createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000),
+                views: 723,
+                clicks: 56
+            },
+            {
+                id: 8,
+                title: "Livro: Mindset - Carol S. Dweck",
+                originalPrice: 49.90,
+                promoPrice: 24.90,
+                discountPercent: 50,
+                category: "livros",
+                store: "Amazon",
+                imageUrl: "https://via.placeholder.com/300x300/F97316/FFFFFF?text=Livro+Mindset",
+                affiliateLink: "https://amzn.to/exemplo8",
+                isActive: true,
+                createdAt: new Date(Date.now() - 12 * 60 * 60 * 1000),
+                views: 445,
+                clicks: 34
+            },
+            {
+                id: 9,
+                title: "Monitor Gamer 24\" 144Hz AOC Hero",
+                originalPrice: 899.90,
+                promoPrice: 649.90,
+                discountPercent: 28,
+                category: "eletronicos",
+                store: "KaBuM!",
+                imageUrl: "https://via.placeholder.com/300x300/DC2626/FFFFFF?text=Monitor+AOC",
+                affiliateLink: "https://kabum.com.br/exemplo9",
+                isActive: true,
+                createdAt: new Date(Date.now() - 7 * 60 * 60 * 1000),
+                views: 1123,
+                clicks: 78
+            },
+            {
+                id: 10,
+                title: "Kit Churrasco Inox 4 Peças Tramontina",
+                originalPrice: 129.90,
+                promoPrice: 79.90,
+                discountPercent: 38,
+                category: "casa",
+                store: "Extra",
+                imageUrl: "https://via.placeholder.com/300x300/059669/FFFFFF?text=Kit+Churrasco",
+                affiliateLink: "https://extra.com.br/exemplo10",
+                isActive: true,
+                createdAt: new Date(Date.now() - 8 * 60 * 60 * 1000),
+                views: 678,
+                clicks: 42
+            }
+        ];
+
+        let currentPromotions = [...mockPromotions];
+        let filteredPromotions = [...mockPromotions];
+        let displayedCount = 0;
+        const itemsPerPage = 8;
+
+        // DOM Elements
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        const discountFilter = document.getElementById('discountFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
+        const promotionsGrid = document.getElementById('promotionsGrid');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const noResults = document.getElementById('noResults');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const activePromotionsCount = document.getElementById('activePromotionsCount');
+
+        // Event Listeners
+        searchInput.addEventListener('input', debounce(applyFilters, 500));
+        categoryFilter.addEventListener('change', applyFilters);
+        priceFilter.addEventListener('change', applyFilters);
+        discountFilter.addEventListener('change', applyFilters);
+        sortFilter.addEventListener('change', applyFilters);
+        clearFiltersBtn.addEventListener('click', clearAllFilters);
+        loadMoreBtn.addEventListener('click', loadMorePromotions);
+
+        // Debounce function for search input
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply all filters
+        function applyFilters() {
+            showLoading();
+            
+            setTimeout(() => {
+                filteredPromotions = currentPromotions.filter(promotion => {
+                    // Search filter
+                    const searchTerm = searchInput.value.toLowerCase();
+                    const matchesSearch = !searchTerm || 
+                        promotion.title.toLowerCase().includes(searchTerm) ||
+                        promotion.store.toLowerCase().includes(searchTerm);
+
+                    // Category filter
+                    const selectedCategory = categoryFilter.value;
+                    const matchesCategory = !selectedCategory || promotion.category === selectedCategory;
+
+                    // Price filter
+                    const maxPrice = parseFloat(priceFilter.value);
+                    const matchesPrice = !maxPrice || promotion.promoPrice <= maxPrice;
+
+                    // Discount filter
+                    const minDiscount = parseInt(discountFilter.value);
+                    const matchesDiscount = !minDiscount || promotion.discountPercent >= minDiscount;
+
+                    return matchesSearch && matchesCategory && matchesPrice && matchesDiscount && promotion.isActive;
+                });
+
+                // Apply sorting
+                const sortBy = sortFilter.value;
+                switch (sortBy) {
+                    case 'newest':
+                        filteredPromotions.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                        break;
+                    case 'discount-desc':
+                        filteredPromotions.sort((a, b) => b.discountPercent - a.discountPercent);
+                        break;
+                    case 'price-asc':
+                        filteredPromotions.sort((a, b) => a.promoPrice - b.promoPrice);
+                        break;
+                    case 'price-desc':
+                        filteredPromotions.sort((a, b) => b.promoPrice - a.promoPrice);
+                        break;
+                    case 'popular':
+                        filteredPromotions.sort((a, b) => b.views - a.views);
+                        break;
+                }
+
+                updateStats();
+                displayPromotions(true);
+            }, 800);
+        }
+
+        // Clear all filters
+        function clearAllFilters() {
+            searchInput.value = '';
+            categoryFilter.value = '';
+            priceFilter.value = '';
+            discountFilter.value = '';
+            sortFilter.value = 'newest';
+            applyFilters();
+        }
+
+        // Show loading state
+        function showLoading() {
+            promotionsGrid.innerHTML = '';
+            loadingIndicator.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            loadMoreBtn.style.display = 'none';
+        }
+
+        // Update statistics
+        function updateStats() {
+            activePromotionsCount.textContent = filteredPromotions.length;
+        }
+
+        // Display promotions
+        function displayPromotions(reset = false) {
+            loadingIndicator.classList.add('hidden');
+            
+            if (reset) {
+                displayedCount = 0;
+                promotionsGrid.innerHTML = '';
+            }
+
+            if (filteredPromotions.length === 0) {
+                noResults.classList.remove('hidden');
+                loadMoreBtn.style.display = 'none';
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            
+            const endIndex = Math.min(displayedCount + itemsPerPage, filteredPromotions.length);
+            const promotionsToShow = filteredPromotions.slice(displayedCount, endIndex);
+
+            promotionsToShow.forEach(promotion => {
+                const card = createPromotionCard(promotion);
+                promotionsGrid.appendChild(card);
+            });
+
+            displayedCount = endIndex;
+
+            // Show/hide load more button
+            loadMoreBtn.style.display = displayedCount < filteredPromotions.length ? 'block' : 'none';
+        }
+
+        // Load more promotions
+        function loadMorePromotions() {
+            loadMoreBtn.innerHTML = '⏳ Carregando...';
+            setTimeout(() => {
+                displayPromotions();
+                loadMoreBtn.innerHTML = '📦 Carregar mais ofertas';
+            }, 1000);
+        }
+
+        // Create promotion card
+        function createPromotionCard(promotion) {
+            const card = document.createElement('div');
+            card.className = 'promotion-card bg-white rounded-lg shadow-sm hover:shadow-lg transition-all border border-gray-200 overflow-hidden';
+            
+            const timeAgo = getTimeAgo(promotion.createdAt);
+            const savingsAmount = (promotion.originalPrice - promotion.promoPrice).toFixed(2);
+            
+            card.innerHTML = `
+                <div class="relative">
+                    <img src="${promotion.imageUrl}" alt="${promotion.title}" class="w-full h-48 object-cover">
+                    <div class="discount-badge absolute -top-2 -right-2 text-white px-3 py-1 rounded-full text-sm font-bold">
+                        -${promotion.discountPercent}%
+                    </div>
+                    <div class="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs">
+                        ${promotion.store}
+                    </div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-2 line-clamp-2 text-sm leading-5">${promotion.title}</h3>
+                    
+                    <div class="mb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-gray-400 line-through text-sm">R$ ${promotion.originalPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-0.5 rounded text-xs font-semibold">
+                                -${promotion.discountPercent}%
+                            </span>
+                        </div>
+                        <div class="text-2xl font-bold text-green-600">
+                            R$ ${promotion.promoPrice.toLocaleString('pt-BR', {minimumFractionDigits: 2})}
+                        </div>
+                        <div class="text-xs text-green-600 font-semibold">
+                            💰 Economia de R$ ${savingsAmount.replace('.', ',')}
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs text-gray-500 mb-3">
+                        <span>👀 ${promotion.views} visualizações</span>
+                        <span>🕒 ${timeAgo}</span>
+                    </div>
+
+                    <a href="${promotion.affiliateLink}" 
+                       target="_blank" 
+                       onclick="trackClick(${promotion.id})"
+                       class="block w-full bg-gradient-to-r from-orange-600 to-red-600 text-white text-center py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-red-700 transition-all shadow-md hover:shadow-lg">
+                        🛒 VER OFERTA
+                    </a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Track click on promotion
+        function trackClick(promotionId) {
+            const promotion = currentPromotions.find(p => p.id === promotionId);
+            if (promotion) {
+                promotion.clicks++;
+                // Here you would send analytics to your backend
+                console.log(`Clicked on promotion: ${promotion.title}`);
+            }
+        }
+
+        // Get time ago string
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diff = now - new Date(date);
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            if (days > 0) return `${days}d atrás`;
+            if (hours > 0) return `${hours}h atrás`;
+            if (minutes > 0) return `${minutes}min atrás`;
+            return 'Agora';
+        }
+
+        // Update last update timestamp
+        function updateLastUpdateTime() {
+            const now = new Date();
+            const minutes = now.getMinutes();
+            document.getElementById('lastUpdate').textContent = `${minutes % 10} min`;
+        }
+
+        // Initialize page
+        function init() {
+            applyFilters();
+            updateLastUpdateTime();
+            
+            // Update timestamp every minute
+            setInterval(updateLastUpdateTime, 60000);
+            
+            // Simulate new promotions
+            setInterval(() => {
+                const count = document.getElementById('activePromotionsCount');
+                const current = parseInt(count.textContent);
+                count.textContent = current + Math.floor(Math.random() * 3);
+            }, 30000);
+        }
+
+        // Start the app
+        init();
+    </script>
+</body>
+</html>
