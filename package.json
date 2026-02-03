@@ -1,0 +1,14 @@
+{
+  "name": "mega-promocoes-platform",
+  "version": "1.0.0",
+  "description": "Plataforma completa de promoções - Frontend e Backend",
+  "scripts": {
+    "build": "cd promotion-platform/backend && npm install && npm run build && npx prisma generate && cd ../frontend && npm install && npm run build",
+    "start": "cd promotion-platform/backend && npm start",
+    "dev:backend": "cd promotion-platform/backend && npm run dev",
+    "dev:frontend": "cd promotion-platform/frontend && npm run dev"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
