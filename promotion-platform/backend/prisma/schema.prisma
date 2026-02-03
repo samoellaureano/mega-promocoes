@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String   @unique
   name      String?
   password  String
@@ -20,7 +20,7 @@ model User {
 }
 
 model Promotion {
-  id              String           @id @default(cuid())
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
   title           String
   description     String?
   originalPrice   Float
@@ -48,8 +48,8 @@ model Promotion {
 }
 
 model PriceHistory {
-  id          String    @id @default(cuid())
-  promotionId String
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  promotionId String    @db.ObjectId
   price       Float
   checkedAt   DateTime  @default(now())
   promotion   Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
@@ -58,8 +58,8 @@ model PriceHistory {
 }
 
 model SentMessage {
-  id          String    @id @default(cuid())
-  promotionId String
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  promotionId String    @db.ObjectId
   platform    String    @default("whatsapp")
   recipient   String
   message     String
@@ -72,7 +72,7 @@ model SentMessage {
 }
 
 model Configuration {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   key       String   @unique
   value     String
   type      String   @default("string")
@@ -85,7 +85,7 @@ model Configuration {
 }
 
 model ScrapingTarget {
-  id          String   @id @default(cuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   baseUrl     String
   isActive    Boolean  @default(true)
