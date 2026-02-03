@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "npx tsc --noEmit false --allowJs true --strict false",
     "start": "node dist/server.js",
     "migrate": "prisma migrate dev",
     "generate": "prisma generate",

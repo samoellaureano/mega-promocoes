@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -7,7 +7,7 @@ const router = express.Router();
 const prisma = new PrismaClient();
 
 // Login
-router.post('/login', async (req, res) => {
+router.post('/login', async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
 
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Criar primeiro usuário admin
-router.post('/setup', async (req, res) => {
+router.post('/setup', async (req: Request, res: Response) => {
   try {
     const userCount = await prisma.user.count();
     
