@@ -165,7 +165,7 @@ router.patch('/promotions/:id/status', requireAdmin, async (req, res) => {
     const { isApproved } = req.body;
 
     const promotion = await prisma.promotion.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: { isApproved }
     });
 
@@ -183,7 +183,7 @@ router.post('/promotions/:id/regenerate-text', requireAdmin, async (req, res) =>
     const { id } = req.params;
 
     const promotion = await prisma.promotion.findUnique({
-      where: { id }
+      where: { id: parseInt(id) }
     });
 
     if (!promotion) {
@@ -200,7 +200,7 @@ router.post('/promotions/:id/regenerate-text', requireAdmin, async (req, res) =>
     });
 
     const updated = await prisma.promotion.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: { generatedText }
     });
 
@@ -271,7 +271,7 @@ router.patch('/scraping-targets/:id', requireAdmin, async (req, res) => {
     const { isActive } = req.body;
 
     const target = await prisma.scrapingTarget.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: { isActive }
     });
 
@@ -355,7 +355,7 @@ router.get('/promotions/:id/analysis', requireAdmin, async (req, res) => {
     const { id } = req.params;
 
     const promotion = await prisma.promotion.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
       include: {
         priceHistory: {
           orderBy: { checkedAt: 'desc' },

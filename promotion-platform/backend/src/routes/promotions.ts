@@ -84,7 +84,7 @@ router.get('/:id', async (req, res) => {
 
     const promotion = await prisma.promotion.findFirst({
       where: {
-        id,
+        id: parseInt(id),
         isApproved: true,
         isValid: true
       },
@@ -135,7 +135,7 @@ router.post('/:id/click', async (req, res) => {
     if (messageId) {
       await prisma.sentMessage.updateMany({
         where: {
-          promotionId: id,
+          promotionId: parseInt(id),
           id: messageId
         },
         data: {

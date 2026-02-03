@@ -289,7 +289,7 @@ export class ScrapingService {
   // Testar scraping de um target
   async testScrapingTarget(targetId: string): Promise<any[]> {
     const target = await this.prisma.scrapingTarget.findUnique({
-      where: { id: targetId }
+      where: { id: parseInt(targetId) }
     });
 
     if (!target) {

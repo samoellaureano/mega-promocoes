@@ -53,7 +53,7 @@ export class WhatsAppService {
       if (promotionId) {
         await this.prisma.sentMessage.create({
           data: {
-            promotionId,
+            promotionId: parseInt(promotionId),
             platform: 'whatsapp',
             recipient: to,
             message,
@@ -74,7 +74,7 @@ export class WhatsAppService {
       if (promotionId) {
         await this.prisma.sentMessage.create({
           data: {
-            promotionId,
+            promotionId: parseInt(promotionId),
             platform: 'whatsapp',
             recipient: to,
             message,
@@ -97,7 +97,7 @@ export class WhatsAppService {
     errors: string[];
   }> {
     const promotion = await this.prisma.promotion.findUnique({
-      where: { id: promotionId }
+      where: { id: parseInt(promotionId) }
     });
 
     if (!promotion) {
@@ -222,7 +222,7 @@ export class WhatsAppService {
 
       for (const promotion of promotions) {
         try {
-          const result = await this.sendPromotionToContacts(promotion.id, contacts);
+          const result = await this.sendPromotionToContacts(promotion.id.toString(), contacts);
           console.log(`✅ Promoção ${promotion.id}: ${result.sent} enviadas, ${result.failed} falharam`);
           
           // Aguardar entre promoções
